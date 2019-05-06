@@ -17,11 +17,11 @@
     <div id="app" class="container">
       <h1>Vue Todo</h1>
 
-      <nav class="nav nav-pills mb-2">
-        <a class="nav-link" :class="{ active: activeFilter == filter }" href="#" v-for="filter in filters" @click="activeFilter = filter">
-          {{ filter }}
-        </a>
-      </nav>
+      <todo-filter :default-filter="activeFilter"
+        @change="activeFilter = $event"
+        :filters="filters"></todo-filter>
+
+      <todo-filter :filters="colorFilters"></todo-filter>
 
       <ul class="list-group mb-2">
         <li class="list-group-item" v-for="(todo, index) in filteredTodos" :key="todo.id">

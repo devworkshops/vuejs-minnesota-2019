@@ -1,3 +1,35 @@
+Vue.component("todo-filter", {
+  props: {
+    defaultFilter: {
+      type: String
+    },
+    filters:Array
+  },
+  template: `
+  <nav class="nav nav-pills mb-2">
+      <a class="nav-link" :class="{ active: activeFilter == filter }" href="#" 
+        v-for="filter in filters" 
+        @click="selectFilter(filter)">
+        {{ filter }}
+      </a>
+    </nav>
+  `,
+  data() {
+    return {
+      activeFilter: null
+    };
+  },
+  methods: {
+    selectFilter(filter) {
+      this.$emit("change", filter);
+      this.activeFilter = filter;
+    }
+  },
+  created() {
+    this.activeFilter = this.defaultFilter;
+  }
+});
+
 var app = new Vue({
   el: "#app",
   data: {
@@ -10,6 +42,7 @@ var app = new Vue({
     nextId: 5,
     newTodoTitle: "",
     filters: ["All", "Todo", "Done"],
+    colorFilters: ["Blue", "Green", "Red"],
     activeFilter: "All"
   },
   methods: {
