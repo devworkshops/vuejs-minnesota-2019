@@ -1,19 +1,14 @@
 {
   "categories": [
     {
-      "id": 2,
-      "description": "Sweet and savory sauces relishes spreads and seasonings",
-      "name": "Condiments"
-    },
-    {
       "id": 1,
       "description": "Soft drinks coffees teas beers and ales",
       "name": "Beverages"
     },
     {
       "id": 3,
-      "description": "Desserts candies and sweet breads",
-      "name": "Confections"
+      "description": "Desserts candies and sweet breads!!",
+      "name": "Confections!!"
     },
     {
       "id": 4,
@@ -44,6 +39,11 @@
       "description": "This is a new category",
       "name": "Condiments",
       "id": 9
+    },
+    {
+      "name": "Coffee",
+      "description": "Coffee",
+      "id": 10
     }
   ],
   "products": [
@@ -57,7 +57,7 @@
       "unitsOnOrder": 0,
       "reorderLevel": 0,
       "discontinued": false,
-      "name": "Chef Anton's Cajun Seasoning"
+      "name": "Chef Anton's Cajun Seasoning!!!"
     },
     {
       "id": 5,
