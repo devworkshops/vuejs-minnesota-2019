@@ -4,19 +4,19 @@
     <form class="form">
       <div class="form-group">
         <label class="form-label">Company Name</label>
-        <input class="form-control" type="text" v-model="model.companyName" />
+        <input class="form-control" id="companyNameField" type="text" v-model="model.companyName">
       </div>
       <div class="form-group">
         <label class="form-label">Contact Name</label>
-        <input class="form-control" type="text" v-model="model.contactName" />
+        <input class="form-control" id="contactNameField" type="text" v-model="model.contactName">
       </div>
       <div class="form-group">
         <label class="form-label">Contact Title</label>
-        <input class="form-control" type="text" v-model="model.contactTitle" />
+        <input class="form-control" id="contactTitleField" type="text" v-model="model.contactTitle">
       </div>
     </form>
     <p>
-      <button class="btn btn-primary" @click.prevent="save">Save</button>
+      <button class="btn btn-primary" id="saveButton" @click.prevent="save">Save</button>
       <router-link class="btn" to="/suppliers">Cancel</router-link>
     </p>
   </div>
@@ -32,23 +32,47 @@ export default {
   },
   data() {
     return {
-      model: Object
+      model: {}
     }
   },
   created() {
-    if (!this.supplier) {
-      SuppliersService.get(this.id)
-        .then(r => (this.model = r.data))
-        .catch(err => console.error(err))
+    if (this.id == '0') {
+      this.model = {
+        id: 0,
+        companyName: undefined,
+        contactName: undefined,
+        contactTitle: undefined,
+        address: {
+          street: undefined,
+          city: undefined,
+          region: undefined,
+          postalCode: undefined,
+          country: undefined,
+          phone: undefined
+        }
+      }
     } else {
-      this.model = this.supplier || {}
+      if (!this.supplier) {
+        SuppliersService.get(this.id)
+          .then(r => (this.model = r.data))
+          .catch(err => console.error(err))
+      } else {
+        this.model = this.supplier || {}
+      }
     }
   },
   methods: {
     save() {
-      SuppliersService.update(this.model)
-        .then(() => this.$router.push('/suppliers'))
-        .catch(err => console.error(err))
+      if (this.id == '0') {
+        console.log(this.model)
+        SuppliersService.create(this.model)
+          .then(() => this.$router.push('/suppliers'))
+          .catch(err => console.error(err))
+      } else {
+        SuppliersService.update(this.model)
+          .then(() => this.$router.push('/suppliers'))
+          .catch(err => console.error(err))
+      }
     }
   }
 }
