@@ -1,43 +1,47 @@
 <template>
-    <div>
-        <div class="clearfix">
-            <h1 class="float-left">Products</h1>
-            <router-link
-                tag="button"
-                class="btn btn-primary float-right"
-                :to="{ name: 'products-edit', params: { id: 0 } }"
-            >Add</router-link>
-        </div>
-        <table class="table">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Stock</th>
-                <th>Actions</th>
-            </tr>
-            <tr v-for="product in products" :key="product.id">
-                <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.unitPrice }}</td>
-                <td>{{ product.unitsInStock }}</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <router-link
-                            tag="button"
-                            :to="{name:'products-edit',params:{id:product.id}}"
-                            class="btn btn-secondary"
-                        >Edit</router-link>
-                        <button
-                            type="button"
-                            class="btn btn-danger"
-                            @click="remove(product.id)"
-                        >Delete</button>
-                    </div>
-                </td>
-            </tr>
-        </table>
+  <div>
+    <div class="clearfix">
+      <h1 class="float-left">Product</h1>
+      <router-link
+        tag="button"
+        class="btn btn-primary float-right"
+        :to="{ name: 'products-edit', params: { id: 0 } }"
+        >Add</router-link
+      >
     </div>
+    <table class="table">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Actions</th>
+      </tr>
+      <tr v-for="product in products" :key="product.id">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.unitPrice }}</td>
+        <td>{{ product.unitsInStock }}</td>
+        <td>
+          <div class="btn-group" role="group">
+            <router-link
+              tag="button"
+              :to="{ name: 'products-edit', params: { id: product.id } }"
+              class="btn btn-secondary"
+              >Edit</router-link
+            >
+            <button
+              type="button"
+              class="btn btn-danger"
+              @click="remove(product.id)"
+            >
+              Delete
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -67,5 +71,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

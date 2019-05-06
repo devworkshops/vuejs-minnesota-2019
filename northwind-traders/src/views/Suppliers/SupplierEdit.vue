@@ -1,18 +1,18 @@
 <template>
   <div>
-    <h1>{{id?`Supplier #${id}`:'New Supplier'}}</h1>
+    <h1>{{ id ? `Supplier #${id}` : 'New Supplier' }}</h1>
     <form class="form">
       <div class="form-group">
         <label class="form-label">Company Name</label>
-        <input class="form-control" type="text" v-model="model.companyName">
+        <input class="form-control" type="text" v-model="model.companyName" />
       </div>
       <div class="form-group">
         <label class="form-label">Contact Name</label>
-        <input class="form-control" type="text" v-model="model.contactName">
+        <input class="form-control" type="text" v-model="model.contactName" />
       </div>
       <div class="form-group">
         <label class="form-label">Contact Title</label>
-        <input class="form-control" type="text" v-model="model.contactTitle">
+        <input class="form-control" type="text" v-model="model.contactTitle" />
       </div>
     </form>
     <p>
@@ -47,12 +47,11 @@ export default {
   methods: {
     save() {
       SuppliersService.update(this.model)
-        .then(r => this.$router.push('/suppliers'))
+        .then(() => this.$router.push('/suppliers'))
         .catch(err => console.error(err))
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
