@@ -37,6 +37,14 @@ export default {
 }
 </script>
 
+<style lang="scss">
+@import './assets/custom.scss';
+@import '~bootswatch/dist/Cosmo/variables';
+@import '~bootstrap/scss/bootstrap';
+@import '~bootswatch/dist/Cosmo/bootswatch';
+@import '~bootstrap-vue/dist/bootstrap-vue';
+</style>
+
 <style>
 html,
 body {
@@ -61,5 +69,8 @@ main > .container {
   padding-right: 15px;
   padding-left: 15px;
 }
-
+.feather {
+  width: 16px;
+  height: 16px;
+}
 </style>

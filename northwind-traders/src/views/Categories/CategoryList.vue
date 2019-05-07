@@ -28,14 +28,14 @@
           <td>
             <div class="btn-group" role="group">
               <button type="button" class="btn btn-secondary" @click="update()">
-                Update
+                <vue-feather type="check"></vue-feather>
               </button>
               <button
                 type="button"
                 class="btn btn-warning"
                 @click="cancelUpdate()"
               >
-                Cancel
+                <vue-feather type="corner-up-left"></vue-feather>
               </button>
             </div>
           </td>
@@ -51,14 +51,14 @@
                 class="btn btn-secondary"
                 @click="edit(category, index)"
               >
-                Edit
+                <vue-feather type="edit-2"></vue-feather>
               </button>
               <button
                 type="button"
                 class="btn btn-danger"
                 @click="remove(category.id)"
               >
-                Delete
+                <vue-feather type="x"></vue-feather>
               </button>
             </div>
           </td>
@@ -93,10 +93,10 @@
         <td>
           <div class="btn-group" role="group">
             <button type="button" class="btn btn-secondary" @click="add()">
-              Add
+              <vue-feather type="plus"></vue-feather>
             </button>
             <button type="button" class="btn btn-warning" @click="resetAdd()">
-              Cancel
+              <vue-feather type="corner-up-left"></vue-feather>
             </button>
           </div>
         </td>
@@ -107,8 +107,12 @@
 
 <script>
 import { CategoriesService } from '@/services/NorthwindService.js'
+import VueFeather from 'vue-feather'
 
 export default {
+  components: {
+    VueFeather
+  },
   data() {
     return {
       categories: [],

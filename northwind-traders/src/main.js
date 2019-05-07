@@ -4,8 +4,6 @@ import router from './router'
 import dateFilter from '@/filters/date'
 import Vuelidate from 'vuelidate'
 import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 
