@@ -1,4 +1,5 @@
 import axios from 'axios'
+import NProgress from 'nprogress'
 
 const apiClient = axios.create({
   baseURL: `//localhost:3000`,
@@ -6,8 +7,29 @@ const apiClient = axios.create({
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'
-  }
+  },
+  timeout: 1000
 })
+
+apiClient.interceptors.request.use(
+  config => {
+    NProgress.start()
+    return config
+  },
+  err => {
+    NProgress.done()
+  }
+)
+
+apiClient.interceptors.response.use(
+  config => {
+    NProgress.done()
+    return config
+  },
+  err => {
+    NProgress.done()
+  }
+)
 
 export const SuppliersService = {
   getAll() {

@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import dateFilter from '@/filters/date'
 import Vuelidate from 'vuelidate'
+import 'nprogress/nprogress.css'
 
 Vue.use(Vuelidate)
 
