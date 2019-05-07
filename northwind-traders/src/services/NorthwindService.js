@@ -3,6 +3,7 @@ import NProgress from 'nprogress'
 import router from '../router.js'
 
 const apiClient = axios.create({
+  baseURL : process.env.VUE_APP_BASE_API,
   withCredentials: false, // This is the default
   headers: {
     Accept: 'application/json',
