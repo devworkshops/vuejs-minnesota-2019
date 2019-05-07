@@ -17,13 +17,13 @@ steps:
     verbose: false
     customCommand: 'run test:unit'
 
-- task: Npm@1
-  displayName: 'e2e test'
-  inputs:
-    command: custom
-    workingDir: 'northwind-traders'
-    verbose: false
-    customCommand: 'run test:e2e:ci'
+# - task: Npm@1
+#   displayName: 'e2e test'
+#   inputs:
+#     command: custom
+#     workingDir: 'northwind-traders'
+#     verbose: false
+#     customCommand: 'run test:e2e:ci'
 
 - task: Npm@1
   displayName: build
