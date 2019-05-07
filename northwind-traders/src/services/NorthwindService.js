@@ -3,7 +3,6 @@ import NProgress from 'nprogress'
 import router from '../router.js'
 
 const apiClient = axios.create({
-  baseURL: `//localhost:3000`,
   withCredentials: false, // This is the default
   headers: {
     Accept: 'application/json',
