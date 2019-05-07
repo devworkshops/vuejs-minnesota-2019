@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Northwind Traders</a>
+      <a class="navbar-brand" href="#">{{appTitle}}</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -53,6 +53,9 @@ export default {
   computed: {
     isLoggedIn() {
       return !!this.user
+    },
+    appTitle() {
+      return process.env.VUE_APP_TITLE
     }
   },
   methods: {
