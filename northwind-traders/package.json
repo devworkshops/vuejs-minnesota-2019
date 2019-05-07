@@ -7,19 +7,25 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "mock-api": "json-server db.json --watch",
-    "test:unit": "vue-cli-service test:unit"
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:unit": "vue-cli-service test:unit",
+    "json-server": "json-server db.json --port 3000",
+    "test:e2e:headless": "vue-cli-service test:e2e --headless",
+    "test:e2e:ci": "npm-run-all -p -r json-server test:e2e:headless"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "core-js": "^2.6.5",
     "json-server": "^0.14.2",
     "moment": "^2.24.0",
+    "npm-run-all": "^4.1.5",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuelidate": "^0.7.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-e2e-cypress": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
     "@vue/cli-plugin-unit-jest": "^3.7.0",
     "@vue/cli-service": "^3.7.0",

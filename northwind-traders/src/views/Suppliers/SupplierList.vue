@@ -22,7 +22,7 @@
                 name: 'suppliers-edit',
                 params: { id: supplier.id.toString(), supplier: supplier }
               }"
-              class="btn btn-secondary"
+              class="btn btn-secondary suppliers-edit"
               >Edit</router-link
             >
             <button type="button" class="btn btn-danger">Delete</button>
