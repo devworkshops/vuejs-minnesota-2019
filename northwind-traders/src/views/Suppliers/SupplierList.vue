@@ -18,9 +18,13 @@
           <div class="btn-group" role="group">
             <router-link
               tag="button"
-              :to="{ name: 'suppliers-edit', params: { id: supplier.id.toString(), supplier: supplier } }"
+              :to="{
+                name: 'suppliers-edit',
+                params: { id: supplier.id.toString(), supplier: supplier }
+              }"
               class="btn btn-secondary suppliers-edit"
-            >Edit</router-link>
+              >Edit</router-link
+            >
             <button type="button" class="btn btn-danger">Delete</button>
           </div>
         </td>
@@ -46,5 +50,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

@@ -4,19 +4,36 @@
     <form class="form">
       <div class="form-group">
         <label class="form-label">Company Name</label>
-        <input class="form-control" id="companyNameField" type="text" v-model="model.companyName">
+        <input
+          class="form-control"
+          id="companyNameField"
+          type="text"
+          v-model="model.companyName"
+        />
       </div>
       <div class="form-group">
         <label class="form-label">Contact Name</label>
-        <input class="form-control" id="contactNameField" type="text" v-model="model.contactName">
+        <input
+          class="form-control"
+          id="contactNameField"
+          type="text"
+          v-model="model.contactName"
+        />
       </div>
       <div class="form-group">
         <label class="form-label">Contact Title</label>
-        <input class="form-control" id="contactTitleField" type="text" v-model="model.contactTitle">
+        <input
+          class="form-control"
+          id="contactTitleField"
+          type="text"
+          v-model="model.contactTitle"
+        />
       </div>
     </form>
     <p>
-      <button class="btn btn-primary" id="saveButton" @click.prevent="save">Save</button>
+      <button class="btn btn-primary" id="saveButton" @click.prevent="save">
+        Save
+      </button>
       <router-link class="btn" to="/suppliers">Cancel</router-link>
     </p>
   </div>
