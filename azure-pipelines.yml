@@ -1,0 +1,39 @@
+pool:
+  name: Hosted VS2017
+  demands: npm
+
+steps:
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    workingDir: 'northwind-traders'
+    verbose: false
+
+- task: Npm@1
+  displayName: 'unit test'
+  inputs:
+    command: custom
+    workingDir: 'northwind-traders'
+    verbose: false
+    customCommand: 'run test:unit'
+
+- task: Npm@1
+  displayName: 'e2e test'
+  inputs:
+    command: custom
+    workingDir: 'northwind-traders'
+    verbose: false
+    customCommand: 'run test:e2e:ci'
+
+- task: Npm@1
+  displayName: build
+  inputs:
+    command: custom
+    workingDir: 'northwind-traders'
+    verbose: false
+    customCommand: 'run build'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: 'northwind-traders/dist'
