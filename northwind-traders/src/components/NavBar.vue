@@ -7,7 +7,7 @@
     variant="dark"
   >
     <div class="container">
-      <b-navbar-brand to="/">Northwind Traders</b-navbar-brand>
+      <b-navbar-brand to="/">{{appTitle}}</b-navbar-brand>
       <b-navbar-toggle target="navbarCollapse"></b-navbar-toggle>
       <b-collapse is-nav id="navbarCollapse">
         <b-navbar-nav class="mr-auto" v-if="isLoggedIn">
@@ -57,7 +57,10 @@ export default {
     isLoggedIn() {
       return !!this.user
     },
-    ...mapGetters(['notificationCount'])
+    ...mapGetters(['notificationCount']),
+    appTitle(){
+      return process.env.VUE_APP_TITLE;
+    }
   },
   methods: {
     logout() {

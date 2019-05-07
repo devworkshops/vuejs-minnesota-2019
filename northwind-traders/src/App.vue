@@ -51,7 +51,7 @@ export default {
       auth: Object
     }
   },
-  created() {
+  mounted() {
     this.auth = AuthService
     AuthService.token()
   },
