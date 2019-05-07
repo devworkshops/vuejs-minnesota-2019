@@ -172,7 +172,6 @@ export default {
       this.editingCategory = {}
     },
     remove(id) {
-      var categoryToDelete = this.categories.filter(c => c.id === id)[0]
       CategoriesService.delete(id)
         .then(() => {
           this.categories = this.categories.filter(c => c.id !== id)
@@ -182,9 +181,7 @@ export default {
         })
         .catch(() => {
           this.raiseErrorNotification(
-            `A server error occurred attempting to delete the category '${
-              categoryToDelete.name
-            }'.`
+            `A server error occurred attempting to delete the category.`
           )
         })
     },
@@ -231,6 +228,7 @@ export default {
         this.errors = null
       }
     }
-  }
+  },
+  computed: mapGetters(['getNotificationById'])
 }
 </script>
