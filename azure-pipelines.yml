@@ -31,7 +31,7 @@ steps:
     command: custom
     workingDir: 'northwind-traders'
     verbose: false
-    customCommand: build
+    customCommand: 'run build'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
