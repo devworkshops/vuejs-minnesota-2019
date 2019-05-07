@@ -3,8 +3,15 @@
     <h1>{{ id ? `Supplier #${id}` : 'New Supplier' }}</h1>
     <form class="form">
       <div class="form-group">
-        <label class="form-label">Company Name</label>
-        <input class="form-control" id="companyNameField" type="text" v-model="model.companyName">
+        <label class="col-form-label">Company Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="companyNameField"
+          v-model="model.companyName"
+          :class="{ 'is-invalid': errors && errors.companyName }"
+        >
+        <div class="invalid-feedback" v-if="errors && errors.companyName">{{ errors.companyName }}</div>
       </div>
       <div class="form-group">
         <label class="form-label">Contact Name</label>
@@ -32,7 +39,8 @@ export default {
   },
   data() {
     return {
-      model: {}
+      model: {},
+      errors: {}
     }
   },
   created() {
@@ -67,15 +75,24 @@ export default {
         console.log(this.model)
         SuppliersService.create(this.model)
           .then(() => this.$router.push('/suppliers'))
-          .catch(err => console.error(err))
+          .catch(err => {
+            if (err.response.status == 422) {
+              this.errors = err.response.data.errors
+            }
+          })
       } else {
         SuppliersService.update(this.model)
           .then(() => this.$router.push('/suppliers'))
-          .catch(err => console.error(err))
+          .catch(err => {
+            if (err.response.status == 422) {
+              this.errors = err.response.data.errors
+            }
+          })
       }
     }
   }
 }
 </script>
+
 
 <style lang="scss" scoped></style>
