@@ -1,5 +1,11 @@
 <template>
-  <b-navbar toggleable="md" type="dark" placement="fixed" fill="false" variant="dark">
+  <b-navbar
+    toggleable="md"
+    type="dark"
+    placement="fixed"
+    fill="false"
+    variant="dark"
+  >
     <div class="container">
       <b-navbar-brand to="/">Northwind Traders</b-navbar-brand>
       <b-navbar-toggle target="navbarCollapse"></b-navbar-toggle>

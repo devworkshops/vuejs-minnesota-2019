@@ -10,20 +10,34 @@
           id="companyNameField"
           v-model="model.companyName"
           :class="{ 'is-invalid': errors && errors.companyName }"
-        >
-        <div class="invalid-feedback" v-if="errors && errors.companyName">{{ errors.companyName }}</div>
+        />
+        <div class="invalid-feedback" v-if="errors && errors.companyName">
+          {{ errors.companyName }}
+        </div>
       </div>
       <div class="form-group">
         <label class="form-label">Contact Name</label>
-        <input class="form-control" id="contactNameField" type="text" v-model="model.contactName">
+        <input
+          class="form-control"
+          id="contactNameField"
+          type="text"
+          v-model="model.contactName"
+        />
       </div>
       <div class="form-group">
         <label class="form-label">Contact Title</label>
-        <input class="form-control" id="contactTitleField" type="text" v-model="model.contactTitle">
+        <input
+          class="form-control"
+          id="contactTitleField"
+          type="text"
+          v-model="model.contactTitle"
+        />
       </div>
     </form>
     <p>
-      <button class="btn btn-primary" id="saveButton" @click.prevent="save">Save</button>
+      <button class="btn btn-primary" id="saveButton" @click.prevent="save">
+        Save
+      </button>
       <router-link class="btn" to="/suppliers">Cancel</router-link>
     </p>
   </div>

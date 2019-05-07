@@ -9,7 +9,7 @@
         <div class="col">
           <main role="main" class="flex-shrink-0">
             <div class="container">
-              <router-view/>
+              <router-view />
             </div>
           </main>
         </div>
@@ -18,7 +18,9 @@
 
     <footer class="footer mt-auto py-3">
       <div class="container">
-        <span class="text-muted">Northwind Traders &copy; {{ new Date() | date('YYYY') }}</span>
+        <span class="text-muted"
+          >Northwind Traders &copy; {{ new Date() | date('YYYY') }}</span
+        >
       </div>
     </footer>
   </div>
