@@ -1,4 +1,6 @@
 import axios from 'axios'
+import NProgress from 'nprogress'
+import router from '../router.js'
 
 const apiClient = axios.create({
   baseURL: `//localhost:3000`,
@@ -8,6 +10,30 @@ const apiClient = axios.create({
     'Content-Type': 'application/json'
   }
 })
+
+apiClient.interceptors.request.use(
+  config => {
+    NProgress.start()
+    if (AuthService.token()) {
+      config.headers.authorization = 'Bearer ' + AuthService.token()
+    }
+    return config
+  },
+  err => {
+    NProgress.done()
+  }
+)
+apiClient.interceptors.response.use(
+  config => {
+    NProgress.done()
+    return config
+  },
+  err => {
+    NProgress.done()
+    if (err.response.status == 401) router.push('/unauthorized')
+    throw err
+  }
+)
 
 export const SuppliersService = {
   getAll() {
@@ -64,6 +90,41 @@ export const ProductsService = {
   isUniqueProductName(name) {
     return apiClient.get('/products?name=' + name).then(result => {
       return result.data.length === 0
+    })
+  }
+}
+
+export const AuthService = {
+  currentUser: undefined,
+  currentToken: undefined,
+  isLoggedIn() {
+    return !!this.currentToken
+  },
+  login(email, password) {
+    return apiClient.post('/auth/login', { email, password }).then(response => {
+      this.currentToken = response.data.access_token
+      localStorage.setItem('token', this.currentToken)
+      this.user()
+      return response
+    })
+  },
+  logout() {
+    this.currentToken = null
+    this.currentUser = null
+    localStorage.removeItem('token')
+  },
+  token() {
+    if (!this.currentToken) {
+      this.currentToken = localStorage.getItem('token')
+      if (this.currentToken) {
+        this.user()
+      }
+    }
+    return this.currentToken
+  },
+  user() {
+    return apiClient.get('/user').then(response => {
+      this.currentUser = response.data
     })
   }
 }

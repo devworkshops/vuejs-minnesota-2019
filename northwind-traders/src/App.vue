@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <nav-bar></nav-bar>
+      <nav-bar :user="auth.currentUser"></nav-bar>
     </header>
 
     <div class="container">
@@ -9,7 +9,7 @@
         <div class="col">
           <main role="main" class="flex-shrink-0">
             <div class="container">
-              <router-view />
+              <router-view/>
             </div>
           </main>
         </div>
@@ -18,9 +18,7 @@
 
     <footer class="footer mt-auto py-3">
       <div class="container">
-        <span class="text-muted"
-          >Northwind Traders &copy; {{ new Date() | date('YYYY') }}</span
-        >
+        <span class="text-muted">Northwind Traders &copy; {{ new Date() | date('YYYY') }}</span>
       </div>
     </footer>
   </div>
@@ -28,11 +26,21 @@
 
 <script>
 import NavBar from './components/NavBar.vue'
+import { AuthService } from '@/services/NorthwindService.js'
 
 export default {
   name: 'app',
   components: {
     NavBar
+  },
+  data() {
+    return {
+      auth: Object
+    }
+  },
+  created() {
+    this.auth = AuthService
+    AuthService.token()
   }
 }
 </script>

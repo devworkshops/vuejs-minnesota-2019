@@ -11,7 +11,8 @@
     "test:unit": "vue-cli-service test:unit",
     "json-server": "json-server db.json --port 3000",
     "test:e2e:headless": "vue-cli-service test:e2e --headless",
-    "test:e2e:ci": "npm-run-all -p -r json-server test:e2e:headless"
+    "test:e2e:ci": "npm-run-all -p -r json-server test:e2e:headless",
+    "json-server-auth": "node auth-json-server.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -20,8 +21,10 @@
     "core-js": "^2.6.5",
     "feather-icons": "^4.21.0",
     "json-server": "^0.14.2",
+    "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "npm-run-all": "^4.1.5",
+    "nprogress": "^0.2.0",
     "vue": "^2.6.10",
     "vue-feather": "^1.0.0",
     "vue-router": "^3.0.3",

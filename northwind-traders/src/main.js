@@ -4,6 +4,7 @@ import router from './router'
 import dateFilter from '@/filters/date'
 import Vuelidate from 'vuelidate'
 import BootstrapVue from 'bootstrap-vue'
+import 'nprogress/nprogress.css';
 
 Vue.use(BootstrapVue)
 
