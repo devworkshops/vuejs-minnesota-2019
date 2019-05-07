@@ -4,7 +4,8 @@ import router from './router'
 import dateFilter from '@/filters/date'
 import Vuelidate from 'vuelidate'
 import BootstrapVue from 'bootstrap-vue'
-import 'nprogress/nprogress.css';
+import 'nprogress/nprogress.css'
+import { store } from './store'
 
 Vue.use(BootstrapVue)
 
@@ -16,5 +17,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

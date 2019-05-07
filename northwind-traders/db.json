@@ -1,16 +1,6 @@
 {
   "categories": [
     {
-      "id": 2,
-      "description": "Sweet and savory sauces relishes spreads and seasonings",
-      "name": "Condiments"
-    },
-    {
-      "id": 1,
-      "description": "Soft drinks coffees teas beers and ales",
-      "name": "Beverages"
-    },
-    {
       "id": 3,
       "description": "Desserts candies and sweet breads",
       "name": "Confections"
@@ -39,6 +29,11 @@
       "id": 8,
       "description": "Seaweed and fish",
       "name": "Seafood"
+    },
+    {
+      "name": "Test",
+      "description": "Test",
+      "id": 9
     }
   ],
   "products": [

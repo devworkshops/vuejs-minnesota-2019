@@ -26,6 +26,10 @@
           <b-nav-item @click="logout">
             <vue-feather type="log-out"></vue-feather>Logout
           </b-nav-item>
+          <b-nav-item v-b-toggle.collapseNotifications>
+            <vue-feather type="bell"></vue-feather>Notifications
+            <b-badge>{{ notificationCount }}</b-badge>
+          </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="mr-auto" v-if="!isLoggedIn">
           <b-nav-item to="/login">
@@ -40,6 +44,7 @@
 <script>
 import VueFeather from 'vue-feather'
 import { AuthService } from '@/services/NorthwindService.js'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -51,7 +56,8 @@ export default {
   computed: {
     isLoggedIn() {
       return !!this.user
-    }
+    },
+    ...mapGetters(['notificationCount'])
   },
   methods: {
     logout() {

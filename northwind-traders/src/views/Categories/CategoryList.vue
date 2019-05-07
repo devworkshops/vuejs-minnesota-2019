@@ -108,6 +108,7 @@
 <script>
 import { CategoriesService } from '@/services/NorthwindService.js'
 import VueFeather from 'vue-feather'
+import { mapActions } from 'vuex'
 
 export default {
   components: {
@@ -133,10 +134,15 @@ export default {
     this.fetchAll()
   },
   methods: {
+    ...mapActions(['raiseSuccessNotification', 'raiseErrorNotification']),
     fetchAll() {
       CategoriesService.getAll()
         .then(result => (this.categories = result.data))
-        .catch(error => console.error(error))
+        .catch(() => {
+          this.raiseErrorNotification(
+            'A server error occurred attempting to get all categories.'
+          )
+        })
     },
     edit(category, index) {
       this.editingCategory = { ...category }
@@ -145,18 +151,42 @@ export default {
     update() {
       CategoriesService.update(this.editingCategory)
         .then(() => {
+          this.raiseSuccessNotification(
+            `The category '${
+              this.editingCategory.name
+            }' was successfully updated.`
+          )
+
           this.categories[this.editingIndex] = this.editingCategory
           this.editingCategory = {}
         })
-        .catch(error => console.error(error))
+        .catch(() => {
+          this.raiseErrorNotification(
+            `A server error occurred attempting to update the category '${
+              this.editingCategory.name
+            }'.`
+          )
+        })
     },
     cancelUpdate() {
       this.editingCategory = {}
     },
     remove(id) {
+      var categoryToDelete = this.categories.filter(c => c.id === id)[0]
       CategoriesService.delete(id)
-        .then(() => this.fetchAll())
-        .catch(error => console.error(error))
+        .then(() => {
+          this.categories = this.categories.filter(c => c.id !== id)
+          this.raiseSuccessNotification(
+            `The category was successfully deleted.`
+          )
+        })
+        .catch(() => {
+          this.raiseErrorNotification(
+            `A server error occurred attempting to delete the category '${
+              categoryToDelete.name
+            }'.`
+          )
+        })
     },
     add() {
       this.validate(this.addingCategory)
@@ -166,10 +196,22 @@ export default {
 
       CategoriesService.create(this.addingCategory)
         .then(result => {
+          this.raiseSuccessNotification(
+            `The category '${
+              this.addingCategory.name
+            }' was successfully created.`
+          )
+
           this.categories.push(result.data)
           this.resetAdd()
         })
-        .catch(error => console.error(error))
+        .catch(() => {
+          this.raiseErrorNotification(
+            `A server error occurred attempting to create the category '${
+              this.addingCategory.name
+            }'.`
+          )
+        })
     },
     resetAdd() {
       this.addingCategory = { ...this.defaultCategory }
