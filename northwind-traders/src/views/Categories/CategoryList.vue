@@ -228,7 +228,6 @@ export default {
         this.errors = null
       }
     }
-  },
-  computed: mapGetters(['getNotificationById'])
+  }
 }
 </script>
